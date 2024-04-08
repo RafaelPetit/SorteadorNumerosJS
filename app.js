@@ -3,6 +3,17 @@ function sortear(){
     let de = parseInt(document.getElementById('de').value);
     let ate = parseInt(document.getElementById('ate').value);
 
+    if(de >= ate){
+        reiniciar();
+        alert("Numero 'de' Não pode ser maior que o 'ate' ");
+        return;
+    }
+
+    if((ate - de + 1) < quantidade ){ 
+        alert (" Intervalo indiponível")
+        return;
+    }
+
     let sorteados = numeroAleatorio(quantidade, de, ate);
 
     let resultado = document.getElementById('resultado');
