@@ -7,6 +7,7 @@ function sortear(){
 
     let resultado = document.getElementById('resultado');
     resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados} </label>`
+    trocarStatus();
 }
 
 function numeroAleatorio(quantidade, de, ate){
@@ -23,4 +24,33 @@ function numeroAleatorio(quantidade, de, ate){
     }
 
     return resultado;
+}
+
+function trocarStatus() {
+    let botaoReiniciar = document.getElementById('btn-reiniciar')
+    let botaoSortear = document.getElementById('btn-sortear')
+    if(botaoReiniciar.classList.contains('container__botao-desabilitado')) {
+        botaoReiniciar.classList.remove('container__botao-desabilitado');
+        botaoReiniciar.classList.add('container__botao');
+    } else {
+        botaoReiniciar.classList.remove('container__botao');
+        botaoReiniciar.classList.add('container__botao-desabilitado');
+    }
+
+    if(botaoSortear.classList.contains('container__botao')) {
+        botaoSortear.classList.add('container__botao-desabilitado');
+        botaoSortear.classList.remove('container__botao');
+    } else {
+        botaoSortear.classList.add('container__botao');
+        botaoSortear.classList.remove('container__botao-desabilitado');
+    }
+}
+
+function reiniciar() {
+    document.getElementById('quantidade').value = '';
+    document.getElementById('de').value = '';
+    document.getElementById('ate').value = '';
+    document.getElementById('resultado').innerHTML = '<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>'
+
+    trocarStatus();
 }
