@@ -3,16 +3,24 @@ function sortear(){
     let de = parseInt(document.getElementById('de').value);
     let ate = parseInt(document.getElementById('ate').value);
 
-    let sorteados = [];
-    let numero
+    let sorteados = numeroAleatorio(quantidade, de, ate);
 
-    for(let i=0; i < quantidade; i++) {
-        numero = numeroAleatorio(de, ate);
-        sorteados.push(numero);
-    }
-
+    let resultado = document.getElementById('resultado');
+    resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados} </label>`
 }
 
-function numeroAleatorio(de, ate){
-    return Math.floor(Math.random() * (ate - de + 1)) + de;
+function numeroAleatorio(quantidade, de, ate){
+    let resultado = [];
+
+    for(let i=0; i < quantidade; i++) {
+        numero = Math.floor(Math.random() * (ate - de + 1)) + de;
+
+        while(resultado.includes(numero)){
+        numero = Math.floor(Math.random() * (ate - de + 1)) + de;
+        }
+        
+        resultado.push(numero);
+    }
+
+    return resultado;
 }
